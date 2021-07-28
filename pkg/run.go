@@ -11,7 +11,6 @@ import (
 	deckodertypes "github.com/goodwithtech/deckoder/types"
 
 	"github.com/goodwithtech/dockle/config"
-	"github.com/goodwithtech/dockle/pkg/utils"
 
 	"github.com/goodwithtech/dockle/pkg/report"
 
@@ -32,16 +31,6 @@ func Run(c *cli.Context) (err error) {
 	}
 
 	config.CreateFromCli(c)
-
-	cliVersion := "v" + c.App.Version
-	latestVersion, err := utils.FetchLatestVersion(ctx)
-
-	// check latest version
-	if err != nil {
-		log.Logger.Infof("Failed to check latest version. %s", err)
-	} else if cliVersion != latestVersion && c.App.Version != "dev" {
-		log.Logger.Warnf("A new version %s is now available! You have %s.", latestVersion, cliVersion)
-	}
 
 	args := c.Args()
 	filePath := c.String("input")

@@ -1,3 +1,13 @@
+Updated to not update on run.
+
+Just build and run the container then copy the `dockle` binary out of there.
+
+```
+docker build . -t "dockle:no-update"
+docker run dockle:no-update
+docker cp <container id>:/usr/local/bin .
+```
+________________________________________________________________________
 <img src="imgs/logo.png" width="450">
 
 [![Financial Contributors on Open Collective](https://opencollective.com/dockle/all/badge.svg?label=financial+contributors)](https://opencollective.com/dockle) [![GitHub release](https://img.shields.io/github/release/goodwithtech/dockle.svg)](https://github.com/goodwithtech/dockle/releases/latest)
